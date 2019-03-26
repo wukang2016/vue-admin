@@ -1,29 +1,78 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div id="app">
+        <transition name="fade" mode="out-in">
+            <router-view></router-view>
+        </transition>
     </div>
-    <router-view/>
-  </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+import HelloWorld from "./components/HelloWorld.vue";
+
+export default {
+    name: "app",
+    components: {
+        HelloWorld
     }
-  }
+};
+</script>
+
+<style lang="scss">
+@import "@/styles/reset.scss";
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+body {
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+    font-size: 14px;
+}
+#app {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    width: 100%;
+}
+.page {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    width: 100%;
+}
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
+.mb{
+  margin-bottom: 20px;
+}
+.mb0{
+  margin-bottom: 0 !important;
+}
+.pb0{
+  padding-bottom: 0 !important;
+}
+.mod-breadcrumb .el-breadcrumb {
+    float: right;
+}
+.mod-toolbar {
+    background: #f2f2f2;
+    padding: 10px;
+    margin: 10px 0px;
+    .el-form-item {
+        margin-bottom: 10px;
+    }
+    .el-pagination{
+      float: right;
+      margin-top: 4px;
+    }
 }
 </style>

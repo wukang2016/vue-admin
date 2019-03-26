@@ -4,14 +4,25 @@ import Home from './views/Home.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: Home
+      path: '/login',
+      name: 'login',
+      component: () => import(/* webpackChunkName: "login" */ './views/Login.vue')
+    },
+    {
+      path: '/admin',
+      component: Home,
+      children: [
+        {
+          path: 'table',
+          name: 'table',
+          component: () => import(/* webpackChunkName: "table" */ './views/nav1/Table.vue')
+        }
+      ]
     },
     {
       path: '/about',
@@ -23,3 +34,18 @@ export default new Router({
     }
   ]
 })
+
+// 路由守卫
+router.beforeEach((to, from, next) => {
+  if (to.path == '/login') {
+    sessionStorage.removeItem('user');
+  }
+  let user = JSON.parse(sessionStorage.getItem('user'));
+  if (!user && to.path != '/login') {
+    next({ path: '/login' })
+  } else {
+    next()
+  }
+})
+
+export default router;
