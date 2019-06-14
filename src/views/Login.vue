@@ -23,6 +23,7 @@
                     v-model="form.checkPass"
                     auto-complete="off"
                     placeholder="密码"
+                    @keyup.enter.native="handleLogin"
                 ></el-input>
             </el-form-item>
             <el-form-item>
@@ -32,7 +33,7 @@
                 <el-button
                     type="primary"
                     style="width:100%;"
-                    @click.native.prevent="handleSubmit2"
+                    @click.native.prevent="handleLogin"
                     :loading="logining"
                 >登录</el-button>
                 <!--<el-button @click.native.prevent="handleReset">重置</el-button>-->
@@ -63,14 +64,14 @@ export default {
                     //{ validator: validaePass2 }
                 ]
             },
-            checked: true
+            checked: false
         };
     },
     methods: {
         handleReset() {
             this.$refs.form.resetFields();
         },
-        handleSubmit2(ev) {
+        handleLogin(ev) {
             var _this = this;
             this.$refs.form.validate(valid => {
                 if (valid) {

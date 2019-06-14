@@ -4,6 +4,8 @@ import Home from './views/Home.vue'
 
 Vue.use(Router)
 
+console.log(process.env.BASE_URL)
+
 const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
@@ -37,15 +39,15 @@ const router = new Router({
 
 // 路由守卫
 router.beforeEach((to, from, next) => {
-  if (to.path == '/login') {
-    sessionStorage.removeItem('user');
+  if (to.path === '/login') {
+    sessionStorage.removeItem('user')
   }
-  let user = JSON.parse(sessionStorage.getItem('user'));
-  if (!user && to.path != '/login') {
+  let user = JSON.parse(sessionStorage.getItem('user'))
+  if (!user && to.path !== '/login') {
     next({ path: '/login' })
   } else {
     next()
   }
 })
 
-export default router;
+export default router

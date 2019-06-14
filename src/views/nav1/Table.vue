@@ -43,7 +43,7 @@
                 style="width: 100%;"
                 :default-sort="{prop: 'name', order: 'descending'}"
             >
-                <el-table-column type="selection" width="55"></el-table-column>
+                <el-table-column type="selection" width="55" align="center"></el-table-column>
                 <el-table-column type="index" width="60"></el-table-column>
                 <el-table-column prop="name" label="姓名" width="120" sortable></el-table-column>
                 <el-table-column prop="sex" label="性别" width="100" :formatter="formatSex"></el-table-column>
