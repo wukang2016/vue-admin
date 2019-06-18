@@ -5,8 +5,8 @@ import store from './store'
 import './plugins/element.js'
 import 'font-awesome/css/font-awesome.min.css'
 
-import Mock from './mock'
-Mock.bootstrap()
+// import Mock from './mock'
+// Mock.bootstrap()
 
 Vue.config.productionTip = false
 

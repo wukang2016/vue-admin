@@ -40,10 +40,13 @@ const router = new Router({
 // 路由守卫
 router.beforeEach((to, from, next) => {
   if (to.path === '/login') {
-    sessionStorage.removeItem('user')
+    sessionStorage.removeItem('token')
   }
-  let user = JSON.parse(sessionStorage.getItem('user'))
-  if (!user && to.path !== '/login') {
+
+  let token = sessionStorage.getItem('token')
+
+  console.log(token)
+  if (!token && to.path !== '/login') {
     next({ path: '/login' })
   } else {
     next()

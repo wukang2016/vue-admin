@@ -86,17 +86,18 @@ export default {
                         console.log(data);
                         this.logining = false;
                         //NProgress.done();
-                        let { msg, code, user } = data;
+                        let { msg, code } = data;
                         if (code !== 200) {
                             this.$message({
                                 message: msg,
                                 type: "error"
                             });
                         } else {
-                            sessionStorage.setItem(
-                                "user",
-                                JSON.stringify(user)
-                            );
+                            // sessionStorage.setItem(
+                            //     "user",
+                            //     JSON.stringify(user)
+                            // );
+                            console.log(2323)
                             this.$router.push({ path: "/admin/table" });
                         }
                     });
